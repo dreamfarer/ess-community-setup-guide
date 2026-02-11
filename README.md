@@ -5,7 +5,7 @@ This guide walks you through setting up Element Server Suite (ESS) Community on 
 
 Element is an **open-source**, **decentralized**, **end-to-end encrypted**, **cross-platform messaging** application built on the Matrix protocol. It is available natively for Windows, macOS, Linux, Android, and iOS, and also offers a web client for any browser.
 
-Element combines many of the features we love from other messaging apps: the privacy and anonymity of Signal; servers (_called spaces_), chat and voice channels, including video and screen sharing, similar to Discord; and polls and live-location sharing like WhatsApp.
+Element combines many of the features we love from other messaging apps: the privacy and anonymity of Signal; servers (_called spaces_), chat and voice channels, including video and screen sharing, and fine-grained permissions similar to Discord; and polls and live-location sharing like WhatsApp.
 
 ### Target Audience
 
