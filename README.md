@@ -157,13 +157,22 @@ _It may take some time for the DNS to propagate your records. We hereby make sur
 
 2. Install ESS using _Helm_:
     ```bash
-    helm upgrade --install --namespace "ess" ess oci://ghcr.io/element-hq/ess-helm/matrix-stack -f hostnames.yaml -f tls.yaml -f synapse.yaml --wait
+    helm upgrade --install \
+    --namespace "ess" \
+    ess \
+    oci://ghcr.io/element-hq/ess-helm/matrix-stack \
+    -f hostnames.yaml \
+    -f tls.yaml \
+    -f synapse.yaml \
+    --wait
     ```
    _Add optional additional configuration files by appending `-f <file>` to the command. The same command is also used to update ESS after changes to configuration files._
 
 3. Create your first user:
     ```bash
-    kubectl exec -n ess -it deploy/ess-matrix-authentication-service -- mas-cli manage register-user
+    kubectl exec -n ess -it \
+    deploy/ess-matrix-authentication-service \
+    -- mas-cli manage register-user
     ```
    _Make sure to select `Create user` after entering your desired username and password, else the user will not be created. It might also be beneficial to make this user an admin._
 
