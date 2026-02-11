@@ -1,0 +1,26 @@
+synapse:
+  media:
+    maxUploadSize: 100M
+
+  additional:
+    custom-config.yaml:
+      config: |
+        federation_domain_whitelist: []
+
+        forget_rooms_on_leave: true
+        forgotten_room_retention_period: 7d
+        max_avatar_size: 10M
+
+        retention:
+          enabled: true
+          default_policy:
+            min_lifetime: 1h
+            max_lifetime: 30d
+          allowed_lifetime_min: 1h
+          allowed_lifetime_max: 30d
+          purge_jobs:
+            - interval: 1h
+
+        media_retention:
+          local_media_lifetime: 30d
+          remote_media_lifetime: 30d
