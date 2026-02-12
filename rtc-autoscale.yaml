@@ -1,0 +1,31 @@
+matrixRTC:
+  enabled: true
+
+  nodeSelector:
+    workload: rtc
+
+  tolerations:
+    - key: "workload"
+      operator: "Equal"
+      value: "rtc"
+      effect: "NoSchedule"
+
+  sfu:
+    enabled: true
+
+    nodeSelector:
+      workload: rtc
+
+    tolerations:
+      - key: "workload"
+        operator: "Equal"
+        value: "rtc"
+        effect: "NoSchedule"
+
+    resources:
+      requests:
+        cpu: "2000m"
+        memory: "2Gi"
+      limits:
+        cpu: "4000m"
+        memory: "6Gi"
