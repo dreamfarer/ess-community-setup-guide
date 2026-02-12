@@ -55,7 +55,7 @@ Chose a **permanent** folder where you will store every configuration. For the e
 
     _Find all available configuration options [here](https://element-hq.github.io/synapse/latest/usage/configuration/config_documentation.html), if you wish to customize Synapse._
 
-Should you wish to use a different configuration which automatically spawns between 1–3 Kubernetes nodes exclusively responsible for heavy WebRTC (_used for video calls_), you need to replace `cluster.yaml` with [cluster-autoscale](https://github.com/dreamfarer/ess-community-setup-guide/blob/main/configuration-autoscale/cluster.yaml) and download [rtc-autoscale.yaml](https://github.com/dreamfarer/ess-community-setup-guide/blob/main/configuration-autoscale/rtc.yaml) additionally. (_Warning: Dependent on the workload, this will lead to additional costs of about 11\$–33\$ per month_)
+Should you wish to use a different configuration which automatically spawns between 1–3 Kubernetes nodes exclusively responsible for heavy WebRTC (_used for video calls_), you need to replace `cluster.yaml` with [cluster](https://github.com/dreamfarer/ess-community-setup-guide/blob/main/configuration-autoscale/cluster.yaml) and download [rtc.yaml](https://github.com/dreamfarer/ess-community-setup-guide/blob/main/configuration-autoscale/rtc.yaml) additionally. (_Warning: Dependent on the workload, this will lead to additional costs of about 11\$–33\$ per month_)
 
 ### 2. Set up K3S
 For this step, you'll have to open your terminal at the same directory where you have stored your configurations. Use this terminal session for the entirety of the remaining guide.
