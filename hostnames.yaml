@@ -1,0 +1,16 @@
+elementAdmin:
+  ingress:
+    host: admin.<domain>
+elementWeb:
+  ingress:
+    host: chat.<domain>
+matrixAuthenticationService:
+  ingress:
+    host: account.<domain>
+matrixRTC:
+  ingress:
+    host: mrtc.<domain>
+serverName: <domain>
+synapse:
+  ingress:
+    host: matrix.<domain>
