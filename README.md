@@ -125,29 +125,29 @@ _It may take some time for the DNS to propagate your records. We hereby make sur
    Make sure that all pods are in the `Running` state.
 
 3. Create the Let's Encrypt issuer:
-    ```bash
-      kubectl apply -f - <<EOF
-      apiVersion: cert-manager.io/v1
-      kind: ClusterIssuer
-      metadata:
-        name: letsencrypt-prod
-      spec:
-        acme:
-          server: https://acme-v02.api.letsencrypt.org/directory
-          privateKeySecretRef:
-            name: letsencrypt-prod-private-key
-          solvers:
-            - http01:
-                ingress:
-                  class: traefik
-      EOF
-      ```
+   ```bash
+   kubectl apply -f - <<EOF
+   apiVersion: cert-manager.io/v1
+   kind: ClusterIssuer
+   metadata:
+     name: letsencrypt-prod
+   spec:
+     acme:
+       server: https://acme-v02.api.letsencrypt.org/directory
+       privateKeySecretRef:
+         name: letsencrypt-prod-private-key
+       solvers:
+       - http01:
+           ingress:
+             class: traefik
+   EOF
+   ```
 
 4. Verify that the issuer has been created:
     ```bash
     kubectl get clusterissuer letsencrypt-prod
     ```
-    Make sure that the issuer is in the `Ready` state.
+    Make sure that the issuer is ready.
 
 ### 5. Set up Element Server Suite (ESS)
 1. Create the `ess` namespace:
