@@ -43,7 +43,7 @@ Chose a **permanent** folder where you will store every configuration. For the e
 
 1. Download [cluster.yaml](https://github.com/dreamfarer/ess-community-setup-guide/blob/main/configuration/cluster.yaml). Replace `<your token>` with the Hetzner API token you've generated before.
 
-     *If you wish to further configure k3s settings (e.g., adjust server location), follow [this](https://vitobotta.github.io/hetzner-k3s/Creating_a_cluster/) guide for a complete example with all options.*
+    _If you wish to further configure k3s settings (e.g., adjust server location), follow [this](https://vitobotta.github.io/hetzner-k3s/Creating_a_cluster/) guide for a complete example with all options._
 
 2. Download [hostnames.yaml](https://github.com/dreamfarer/ess-community-setup-guide/blob/main/configuration/hostnames.yaml). Replace each `<domain>` with your domain name (*e.g., example.com*).
 
@@ -54,6 +54,8 @@ Chose a **permanent** folder where you will store every configuration. For the e
 5. Download [synapse.yaml](https://github.com/dreamfarer/ess-community-setup-guide/blob/main/configuration/synapse.yaml).
 
     _Find all available configuration options [here](https://element-hq.github.io/synapse/latest/usage/configuration/config_documentation.html), if you wish to customize Synapse._
+
+Should you wish to use a different configuration which automatically spawns between 1–3 Kubernetes nodes exclusively responsible for heavy WebRTC (_used for video calls_), you need to replace `cluster.yaml` with [cluster-autoscale](https://github.com/dreamfarer/ess-community-setup-guide/blob/main/configuration-autoscale/cluster.yaml) and download [rtc-autoscale.yaml](https://github.com/dreamfarer/ess-community-setup-guide/blob/main/configuration-autoscale/rtc.yaml) additionally. (_Warning: Dependent on the workload, this will lead to additional costs of about 11\$–33\$ per month_)
 
 ### 2. Set up K3S
 For this step, you'll have to open your terminal at the same directory where you have stored your configurations. Use this terminal session for the entirety of the remaining guide.
@@ -170,6 +172,8 @@ _It may take some time for the DNS to propagate your records. We hereby make sur
     --wait
     ```
    _Add optional additional configuration files by appending `-f <file>` to the command. The same command is also used to update ESS after changes to configuration files._
+
+   _If you use the autoscale-configuration, make sure to add `-f rtc.yaml` additionally to the command._
 
 3. Create your first user:
     ```bash
