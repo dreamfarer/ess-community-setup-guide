@@ -41,17 +41,17 @@ First, you are going to create the configuration files needed, then you'll be se
 ### 1. Configuration
 Chose a **permanent** folder where you will store every configuration. For the entire guide, you will always work in this folder.
 
-1. Download [cluster.yaml](https://github.com/dreamfarer/ess-community-setup-guide/blob/main/cluster.yaml). Replace `<your token>` with the Hetzner API token you've generated before.
+1. Download [cluster.yaml](https://github.com/dreamfarer/ess-community-setup-guide/blob/main/configuration/cluster.yaml). Replace `<your token>` with the Hetzner API token you've generated before.
 
      *If you wish to further configure k3s settings (e.g., adjust server location), follow [this](https://vitobotta.github.io/hetzner-k3s/Creating_a_cluster/) guide for a complete example with all options.*
 
-2. Download [hostnames.yaml](https://github.com/dreamfarer/ess-community-setup-guide/blob/main/hostnames.yaml). Replace each `<domain>` with your domain name (*e.g., example.com*).
+2. Download [hostnames.yaml](https://github.com/dreamfarer/ess-community-setup-guide/blob/main/configuration/hostnames.yaml). Replace each `<domain>` with your domain name (*e.g., example.com*).
 
-3. Download [tls.yaml](https://github.com/dreamfarer/ess-community-setup-guide/blob/main/tls.yaml)
+3. Download [tls.yaml](https://github.com/dreamfarer/ess-community-setup-guide/blob/main/configuration/tls.yaml)
 
-4. Download [mas.yaml](https://github.com/dreamfarer/ess-community-setup-guide/blob/main/mas.yaml).
+4. Download [mas.yaml](https://github.com/dreamfarer/ess-community-setup-guide/blob/main/configuration/mas.yaml).
 
-5. Download [synapse.yaml](https://github.com/dreamfarer/ess-community-setup-guide/blob/main/synapse.yaml).
+5. Download [synapse.yaml](https://github.com/dreamfarer/ess-community-setup-guide/blob/main/configuration/synapse.yaml).
 
     _Find all available configuration options [here](https://element-hq.github.io/synapse/latest/usage/configuration/config_documentation.html), if you wish to customize Synapse._
 
