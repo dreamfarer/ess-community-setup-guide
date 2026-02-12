@@ -45,11 +45,13 @@ Chose a **permanent** folder where you will store every configuration. For the e
 
      *If you wish to further configure k3s settings (e.g., adjust server location), follow [this](https://vitobotta.github.io/hetzner-k3s/Creating_a_cluster/) guide for a complete example with all options.*
 
-2. Download [hostnames.yaml](https://github.com/element-hq/ess-helm/blob/main/charts/matrix-stack/ci/fragments/quick-setup-hostnames.yaml). Replace each `your.tld` with your domain name (*e.g., example.com*).
+2. Download [hostnames.yaml](https://github.com/dreamfarer/ess-community-setup-guide/blob/main/hostnames.yaml). Replace each `<domain>` with your domain name (*e.g., example.com*).
 
-3. Download [tls.yaml](https://github.com/element-hq/ess-helm/blob/main/charts/matrix-stack/ci/fragments/quick-setup-letsencrypt.yaml).
+3. Download [tls.yaml](https://github.com/dreamfarer/ess-community-setup-guide/blob/main/tls.yaml)
 
-4. Download [synapse.yaml](https://github.com/dreamfarer/ess-community-setup-guide/blob/main/synapse.yaml).
+4. Download [mas.yaml](https://github.com/dreamfarer/ess-community-setup-guide/blob/main/mas.yaml).
+
+5. Download [synapse.yaml](https://github.com/dreamfarer/ess-community-setup-guide/blob/main/synapse.yaml).
 
     _Find all available configuration options [here](https://element-hq.github.io/synapse/latest/usage/configuration/config_documentation.html), if you wish to customize Synapse._
 
@@ -111,7 +113,7 @@ _It may take some time for the DNS to propagate your records. We hereby make sur
     ```bash
     helm install \
     cert-manager oci://quay.io/jetstack/charts/cert-manager \
-    --version v1.19.3 \
+    --version v1.17.0 \
     --namespace cert-manager \
     --create-namespace \
     --set crds.enabled=true
@@ -164,6 +166,7 @@ _It may take some time for the DNS to propagate your records. We hereby make sur
     -f hostnames.yaml \
     -f tls.yaml \
     -f synapse.yaml \
+    -f mas.yaml \
     --wait
     ```
    _Add optional additional configuration files by appending `-f <file>` to the command. The same command is also used to update ESS after changes to configuration files._
@@ -174,6 +177,8 @@ _It may take some time for the DNS to propagate your records. We hereby make sur
     deploy/ess-matrix-authentication-service \
     -- mas-cli manage register-user
     ```
-   _Make sure to select `Create user` after entering your desired username and password, else the user will not be created. It might also be beneficial to make this user an admin._
+   Enter your desired username, password and make this user an admin. Then select `Create user`, else the user creation fails.
 
 4. Either download the desktop or mobile app or navigate to `https://app.<domain>`. Enjoy Element!
+
+5. To add your friends, instead of manually creating users through the CLI, go to the admin panel at `https://admin.<domain>/registration-tokens/` and generate a registration token so your friends can sign up themselves.
