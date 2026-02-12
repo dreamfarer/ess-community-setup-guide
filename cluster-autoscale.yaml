@@ -1,0 +1,95 @@
+hetzner_token: <your token>
+cluster_name: ess-community-autoscale
+kubeconfig_path: "./kubeconfig"
+k3s_version: v1.32.0+k3s1
+
+networking:
+  ssh:
+    port: 22
+    use_agent: false # set to true if your key has a passphrase
+    public_key_path: "~/.ssh/id_ed25519.pub" # change if your ssh key is not at the default location
+    private_key_path: "~/.ssh/id_ed25519" # change if your ssh key is not at the default location
+  allowed_networks:
+    ssh:
+      - 0.0.0.0/0 # specify if you have a static IP you will manage this cluster from
+    api:
+      - 0.0.0.0/0 # specify if you have a static IP you will manage this cluster from
+    custom_firewall_rules:
+      - description: "HTTP"
+        direction: in
+        protocol: tcp
+        port: 80
+        source_ips: ["0.0.0.0/0", "::/0"]
+      - description: "HTTPS"
+        direction: in
+        protocol: tcp
+        port: 443
+        source_ips: ["0.0.0.0/0", "::/0"]
+      - description: "Matrix RTC TCP"
+        direction: in
+        protocol: tcp
+        port: 30881
+        source_ips: ["0.0.0.0/0", "::/0"]
+      - description: "Matrix RTC UDP"
+        direction: in
+        protocol: udp
+        port: 30882
+        source_ips: ["0.0.0.0/0", "::/0"]
+  public_network:
+    ipv4: true
+    ipv6: true
+  private_network:
+    enabled: true
+    subnet: 10.0.0.0/16
+  cni:
+    enabled: true
+    encryption: false
+    mode: flannel
+
+datastore:
+  mode: etcd
+
+schedule_workloads_on_masters: true
+
+masters_pool:
+  instance_type: ccx13
+  instance_count: 1
+  locations:
+    - nbg1
+
+worker_node_pools:
+  - name: rtc-autoscaled
+    instance_type: cpx32
+    location: nbg1
+    labels:
+      - key: workload
+        value: rtc
+    taints:
+      - key: workload
+        value: rtc:NoSchedule
+    autoscaling:
+      enabled: true
+      min_instances: 1
+      max_instances: 3
+
+addons:
+  csi_driver:
+    enabled: true
+  traefik:
+    enabled: true
+  servicelb:
+    enabled: true
+  metrics_server:
+    enabled: true
+  cluster_autoscaler:
+    enabled: true
+    scan_interval: "10s"
+    scale_down_delay_after_add: "10m"
+    scale_down_delay_after_delete: "30s"
+    max_node_provision_time: "15m"
+
+protect_against_deletion: true
+
+create_load_balancer_for_the_kubernetes_api: false
+
+k3s_upgrade_concurrency: 1
