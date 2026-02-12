@@ -65,7 +65,7 @@ addons:
   servicelb:
     enabled: true
   metrics_server:
-    enabled: false
+    enabled: true
   cluster_autoscaler:
     enabled: false
 
