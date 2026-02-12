@@ -1,7 +1,7 @@
 hetzner_token: <your token>
 cluster_name: ess-community-cluster
 kubeconfig_path: "./kubeconfig"
-k3s_version: v1.35.0+k3s3 # Check https://github.com/k3s-io/k3s/releases for the newest version
+k3s_version: v1.32.0+k3s1
 
 networking:
   ssh:
